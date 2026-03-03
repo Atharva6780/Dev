@@ -37,7 +37,7 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#home" className="text-xl font-bold text-foreground tracking-tight">
             <span className="text-primary">{"<"}</span>
-            dev
+            Atharva Shinde
             <span className="text-primary">{"/>"}</span>
           </a>
 

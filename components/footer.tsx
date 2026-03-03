@@ -10,7 +10,7 @@ export function Footer() {
           <div className="flex items-center gap-2">
             <span className="text-lg font-bold text-foreground tracking-tight">
               <span className="text-primary">{"<"}</span>
-              dev
+              Atharva Shinde
               <span className="text-primary">{"/>"}</span>
             </span>
           </div>
