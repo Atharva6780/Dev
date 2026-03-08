@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useRef, useState } from "react"
-import { motion, useInView, AnimatePresence } from "framer-motion"
+import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   ShoppingCart,
   Zap,
@@ -14,9 +14,16 @@ import {
   Bot,
   Globe,
   Shield,
-} from "lucide-react"
+} from "lucide-react";
 
-const categories = ["All", "Lead Gen", "CRM", "AI", "E-commerce", "Social Media"]
+const categories = [
+  "All",
+  "Lead Gen",
+  "CRM",
+  "AI",
+  "E-commerce",
+  "Social Media",
+];
 
 const products = [
   {
@@ -30,7 +37,12 @@ const products = [
     rating: 4.9,
     reviews: 23,
     icon: Bot,
-    features: ["GPT-4 Integration", "CRM Auto-Sync", "Lead Scoring", "Email Sequences"],
+    features: [
+      "GPT-4 Integration",
+      "CRM Auto-Sync",
+      "Lead Scoring",
+      "Email Sequences",
+    ],
     badge: "Best Seller",
   },
   {
@@ -44,7 +56,12 @@ const products = [
     rating: 4.8,
     reviews: 18,
     icon: Database,
-    features: ["Bi-directional Sync", "Conflict Resolution", "Real-time Updates", "Error Logging"],
+    features: [
+      "Bi-directional Sync",
+      "Conflict Resolution",
+      "Real-time Updates",
+      "Error Logging",
+    ],
     badge: null,
   },
   {
@@ -58,7 +75,12 @@ const products = [
     rating: 4.7,
     reviews: 31,
     icon: Globe,
-    features: ["Multi-Platform", "AI Captions", "Analytics", "Smart Scheduling"],
+    features: [
+      "Multi-Platform",
+      "AI Captions",
+      "Analytics",
+      "Smart Scheduling",
+    ],
     badge: "Popular",
   },
   {
@@ -72,7 +94,12 @@ const products = [
     rating: 5.0,
     reviews: 12,
     icon: ShoppingCart,
-    features: ["Order Processing", "Inventory Sync", "Shipping Alerts", "Accounting"],
+    features: [
+      "Order Processing",
+      "Inventory Sync",
+      "Shipping Alerts",
+      "Accounting",
+    ],
     badge: null,
   },
   {
@@ -86,7 +113,12 @@ const products = [
     rating: 4.6,
     reviews: 27,
     icon: Zap,
-    features: ["Multi-Format", "Custom Tones", "SEO Optimized", "Bulk Generation"],
+    features: [
+      "Multi-Format",
+      "Custom Tones",
+      "SEO Optimized",
+      "Bulk Generation",
+    ],
     badge: "New",
   },
   {
@@ -114,7 +146,12 @@ const products = [
     rating: 4.9,
     reviews: 20,
     icon: Mail,
-    features: ["Personalization", "Follow-ups", "Response Tracking", "A/B Testing"],
+    features: [
+      "Personalization",
+      "Follow-ups",
+      "Response Tracking",
+      "A/B Testing",
+    ],
     badge: "Best Seller",
   },
   {
@@ -128,15 +165,26 @@ const products = [
     rating: 4.7,
     reviews: 9,
     icon: Shield,
-    features: ["Real-time Monitoring", "Multi-Channel", "Custom Rules", "Incident Log"],
+    features: [
+      "Real-time Monitoring",
+      "Multi-Channel",
+      "Custom Rules",
+      "Incident Log",
+    ],
     badge: null,
   },
-]
+];
 
-function ProductCard({ product, index }: { product: (typeof products)[0]; index: number }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-60px" })
-  const Icon = product.icon
+function ProductCard({
+  product,
+  index,
+}: {
+  product: (typeof products)[0];
+  index: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const Icon = product.icon;
 
   return (
     <motion.div
@@ -173,7 +221,9 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
           <div className="flex items-center gap-2 mt-2">
             <div className="flex items-center gap-1">
               <Star className="h-3.5 w-3.5 fill-primary text-primary" />
-              <span className="text-sm font-semibold text-foreground">{product.rating}</span>
+              <span className="text-sm font-semibold text-foreground">
+                {product.rating}
+              </span>
             </div>
             <span className="text-xs text-muted-foreground">
               ({product.reviews} reviews)
@@ -200,7 +250,9 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
         {/* Footer */}
         <div className="p-6 pt-0 flex items-center justify-between">
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-foreground">${product.price}</span>
+            <span className="text-2xl font-bold text-foreground">
+              ${product.price}
+            </span>
             {product.originalPrice && (
               <span className="text-sm text-muted-foreground line-through">
                 ${product.originalPrice}
@@ -218,18 +270,18 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
         </div>
       </motion.div>
     </motion.div>
-  )
+  );
 }
 
 export function ProductsSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
-  const [activeCategory, setActiveCategory] = useState("All")
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [activeCategory, setActiveCategory] = useState("All");
 
   const filtered =
     activeCategory === "All"
       ? products
-      : products.filter((p) => p.category === activeCategory)
+      : products.filter((p) => p.category === activeCategory);
 
   return (
     <section ref={sectionRef} id="products" className="relative py-32 px-6">
@@ -303,10 +355,12 @@ export function ProductsSection() {
           className="mt-20 rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card to-card p-8 md:p-12 text-center glow-teal"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-foreground">
-            Need a Custom Workflow?
+            Let's Build Something Great
           </h3>
           <p className="mt-3 text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            {"I build custom n8n automations tailored to your exact business needs. Let's discuss your project and build something powerful."}
+            {
+              "I create custom automation workflows and modern websites tailored to your needs. Let's bring your ideas to life and build solutions that save time, improve efficiency, and grow your business."
+            }
           </p>
           <a
             href="#contact"
@@ -318,5 +372,5 @@ export function ProductsSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
