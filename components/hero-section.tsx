@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { ChevronDown } from "lucide-react"
-import { HeroScene } from "./hero-scene"
-import Image from "next/image"
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import { HeroScene } from "./hero-scene";
+import Image from "next/image";
 
 export function HeroSection() {
-  const containerRef = useRef<HTMLElement>(null)
+  const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
-  })
+  });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, 300])
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
+  const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
 
   return (
     <section
@@ -29,22 +29,27 @@ export function HeroSection() {
 
       <motion.div
         style={{ y, opacity, scale }}
-        className="relative z-10 px-4 pt-24"
+        className="relative z-10 px-4 pt-20 md:pt-20 lg:pt-2"
       >
         {/* Side-by-side wrapper */}
         <div className="flex flex-col md:flex-row items-center gap-10">
-
           {/* Profile Photo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.1, type: "spring", stiffness: 100 }}
+            transition={{
+              duration: 1,
+              delay: 0.1,
+              type: "spring",
+              stiffness: 100,
+            }}
             className="relative"
           >
             <motion.div
               className="absolute -inset-2 rounded-full"
               style={{
-                background: "conic-gradient(from 0deg, oklch(0.72 0.19 180), oklch(0.72 0.19 180 / 0.1), oklch(0.72 0.19 180))",
+                background:
+                  "conic-gradient(from 0deg, oklch(0.72 0.19 180), oklch(0.72 0.19 180 / 0.1), oklch(0.72 0.19 180))",
               }}
               animate={{ rotate: 360 }}
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
@@ -53,7 +58,8 @@ export function HeroSection() {
             <motion.div
               className="absolute -inset-3 rounded-full"
               style={{
-                background: "radial-gradient(circle, oklch(0.72 0.19 180 / 0.3), transparent 70%)",
+                background:
+                  "radial-gradient(circle, oklch(0.72 0.19 180 / 0.3), transparent 70%)",
               }}
               animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.1, 1] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -72,7 +78,6 @@ export function HeroSection() {
 
           {/* Text Content */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
-
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -101,8 +106,8 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="mt-6 max-w-xl text-muted-foreground text-lg leading-relaxed"
             >
-              I design and develop powerful n8n workflows, web applications,
-              and digital solutions that transform how businesses operate.
+              I design and develop powerful n8n workflows, web applications, and
+              digital solutions that transform how businesses operate.
             </motion.p>
 
             <motion.div
@@ -124,7 +129,6 @@ export function HeroSection() {
                 View Projects
               </a>
             </motion.div>
-
           </div>
         </div>
       </motion.div>
@@ -146,5 +150,5 @@ export function HeroSection() {
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }
